@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using MinhaAPICore.Model;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApiDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 // Add services to the container.
 
